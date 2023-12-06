@@ -13,5 +13,8 @@ To run the client: `cd client` `pnpm i` `pmpm start`
 
 Video of game: 
 
-https://github.com/Looease/guess-the-character/assets/40807466/f27f5a65-883b-4fe4-88ca-6c9f43596bfd
+
+
+https://github.com/Looease/guess-the-character/assets/40807466/c6aaf002-d35d-4f18-a4a5-c521a784bd43
+
 
