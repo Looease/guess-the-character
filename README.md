@@ -1,6 +1,6 @@
 # Guess the  character
 
-This is a full stack TypeScript express app.
+This is a full stack TypeScript/Express app.
 
 Accessing:
 The app uses pnpm as a package manager.
