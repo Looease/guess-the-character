@@ -7,6 +7,6 @@ The app uses pnpm as a package manager.
 
 Clone the app.
 
-To run the server: cd server pnpm i pmpm dev
+To run the server: `cd server` `pnpm i` `pmpm dev`
 
-To run the client: cd client pnpm i pmpm start
+To run the client: `cd client` `pnpm i` `pmpm start`
