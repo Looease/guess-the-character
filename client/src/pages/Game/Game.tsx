@@ -9,6 +9,9 @@ import { handleCheckAnswers } from "../../requests/handleCheckAnswers";
 const Game = () => {
   const { data } = useGetCharacters();
 
+  console.log(process.env, 'process.env')
+
+
   const [sessionData, setSessionData] = useState<AnswerData[]>([]);
 
   useEffect(() => {

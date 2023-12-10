@@ -10,7 +10,8 @@ type AnswersProps = {
 };
 
 const Answers: FC<AnswersProps> = ({ answers, scores }) => {
-  console.log(scores);
+  console.log(process.env);
+  console.log(scores)
   return (
     <div>
       {scores && scores.length <= 9 && (

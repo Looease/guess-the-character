@@ -2,6 +2,9 @@ import { handleStartQuiz } from "../../requests/startQuiz";
 import "./Welcome.css";
 
 const Welcome = () => {
+
+  console.log(process.env, 'process.env')
+
   return (
     <main className="main">
       <h1>Guess the character</h1>

@@ -1,8 +1,12 @@
 // import { environment } from '@utils/get-environment-variable';
 import { useQuery } from "react-query";
+import {getUrl} from "../utils/getUrl"
+
 
 export const useGetCharacters = () => {
-  const fetchUrl = "http://localhost:8000/quiz";
+
+    //TODO make enum list
+const fetchUrl = getUrl('quiz')
 
   return useQuery({
     queryKey: ["characters"],

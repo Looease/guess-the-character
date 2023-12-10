@@ -1,4 +1,10 @@
+import {getUrl} from "../utils/getUrl"
+
 export const updateAnswer = async (answer: any) => {
+
+   //TODO make enum list
+const fetchUrl = getUrl('update-answer')
+
   try {
     const transformedData = {
       answer: answer.answer,
@@ -6,7 +12,7 @@ export const updateAnswer = async (answer: any) => {
       isCorrect: answer.isCorrect,
     };
 
-    const response = await fetch("http://localhost:8000/update-answer", {
+    const response = await fetch(`${fetchUrl}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
