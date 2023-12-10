@@ -4,10 +4,10 @@
   "description": "",
   "main": "/dist/functions/express.js",
   "scripts": {
-    "build": "netlify deploy --prod",
+    "build": "npm install && npx tsc && npm run build:functions",
     "start": "node dist/functions/express.js",
     "dev": "npx tsc -w & nodemon dist/functions/express.js",
-    "build:functions": "tsc -p functions",
+    "build:functions": "npx tsc -p functions",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
