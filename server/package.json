@@ -4,7 +4,7 @@
   "description": "",
   "main": "/dist/functions/express.js",
   "scripts": {
-    "build": "npm install && npx tsc && npm run build:functions",
+    "build": "npm install && npx tsc",
     "start": "node dist/functions/express.js",
     "dev": "npx tsc -w & nodemon dist/functions/express.js",
     "build:functions": "npx tsc -p functions",
