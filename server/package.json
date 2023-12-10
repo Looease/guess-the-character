@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "/dist/functions/express.js",
   "scripts": {
-    "build": "npx tsc && cp _redirects dist/ && npm run build:functions",
-    "start": "node dist/index.js",
-    "dev": "npx tsc -w & nodemon dist/index.js",
+    "build": "netlify deploy --prod",
+    "start": "node dist/functions/express.js",
+    "dev": "npx tsc -w & nodemon dist/functions/express.js",
     "build:functions": "tsc -p functions",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,15 +20,17 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "pg": "^8.11.3",
-    "pg-promise": "^11.5.4",
-    "serverless-http": "^3.2.0"
+    "serverless-http": "^3.2.0",
+    "netlify-cli": "17.9.0",
+    "netlify-lambda": "^2.0.15"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/express-session": "^1.17.10",
     "@types/node": "^20.10.2",
+    "@types/serverless": "^3.12.19",
     "nodemon": "^3.0.2",
     "typescript": "^5.3.2"
   }

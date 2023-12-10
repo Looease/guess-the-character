@@ -1,13 +1,4 @@
 [build]
-  command = "pnpm run build && echo Building Functions"
-  functions = "dist/functions"
-
-  [functions]
-  node_bundler = "esbuild"
-
-  [[redirects]]
-    from = "/*"
-    to = "/.netlify/functions/express/:splat"
-    status = 200
+    functions = "dist/functions"
 
 
