@@ -21,6 +21,12 @@ Publish directory: `.`
 
 To deploy the client: `cd client` `netlify build` `netlify deploy prod`
 
+Prod Url:
+
+[Guess the character - frontend](https://pages.github.com/](https://elaborate-tarsier-256666.netlify.app/).
+
+[Guess the character - backend](https://darling-choux-63e4e8.netlify.app/.netlify/functions/express/).
+
 Video of game: 
 
 
