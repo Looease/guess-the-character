@@ -21,7 +21,7 @@ const axios_1 = __importDefault(require("axios"));
 const cors_1 = __importDefault(require("cors"));
 const api = (0, express_1.default)();
 api.use((0, cors_1.default)({
-    origin: "https://main--steady-kitten-11d7a8.netlify.app/",
+    origin: ["http://localhost:8888", "https://elaborate-tarsier-256666.netlify.app", "http://localhost:3000"],
     credentials: true,
 }));
 api.use(express_1.default.json());

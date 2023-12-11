@@ -7,12 +7,22 @@ import { useGetCharacters } from "../../hooks/useGetCharacters";
 import { handleCheckAnswers } from "../../requests/handleCheckAnswers";
 
 const Game = () => {
-  const { data } = useGetCharacters();
+  const [environment, setEnvironment] = useState('')
+
+  const { data } = useGetCharacters(environment);
 
   const [sessionData, setSessionData] = useState<AnswerData[]>([]);
 
+ 
   useEffect(() => {
-    handleCheckAnswers(data, setSessionData);
+    if(process.env.NODE_ENV){
+      setEnvironment(process.env.NODE_ENV)
+    }
+
+  },[process.env.NODE_ENV])
+
+  useEffect(() => {
+    handleCheckAnswers(data, setSessionData, environment);
   }, [data]);
 
   return (

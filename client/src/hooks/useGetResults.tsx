@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import {getUrl} from "../utils/getUrl"
 
 export const useGetResults = () => {
-  const fetchUrl = "http://localhost:8000/check-session";
+
+//TODO make enum list
+const fetchUrl = getUrl('check-session')
 
   return useQuery({
     queryKey: ["results"],

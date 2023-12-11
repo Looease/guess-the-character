@@ -1,9 +1,16 @@
+import {getUrl} from "../utils/getUrl"
+
 export const handleCheckAnswers = async (
   data: any,
-  setSessionData: (data: any) => void
+  setSessionData: (data: any) => void,
+  environment?: string
 ) => {
+
+  //TODO make enum list
+  const fetchUrl = getUrl('check-answers', environment)
+
   try {
-    const response = await fetch("http://localhost:8000/check-answers", {
+    const response = await fetch(`${fetchUrl}`, {
       credentials: "include",
     });
 

@@ -1,26 +1,22 @@
-import React from "react";
 import "./App.css";
 import Game from "./pages/Game/Game";
 import { Welcome } from "./components/Welcome";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Welcome />,
-  },
-  {
-    path: "/quiz",
-    element: <Game />,
-  },
-]);
-
-const App: React.FC = () => {
+const App = () => {
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/game" element={<Game />} />
+        <Route path="/game" element={<Navigate to="/game" />} />
+      </Routes>
+    </Router>
   );
 };
 
