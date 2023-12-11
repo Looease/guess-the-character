@@ -100,10 +100,10 @@ router.post("/update-answer", (req: Request, res: Response) => {
     req.session.data = req.session.data || [];
     req.session.data.push(data);
 
-    if (req.session.data) {
-      const redirectLocation = "/quiz";
-      return res.redirect(302, redirectLocation);
-    }
+    // if (req.session.data) {
+    //   const redirectLocation = "/quiz";
+    //   return res.redirect(302, redirectLocation);
+    // }
     res.send({ success: true });
   } catch (error) {
     console.error("Error setting updating answer:", error);
