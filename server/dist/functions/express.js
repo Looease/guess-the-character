@@ -35,7 +35,6 @@ app.use((0, express_session_1.default)({
         httpOnly: false,
         path: "/",
         sameSite: "none",
-        secure: true,
     },
 }));
 app.use(express_1.default.urlencoded({ extended: true }));

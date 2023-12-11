@@ -42,7 +42,6 @@ app.use(
       httpOnly: false,
       path: "/",
       sameSite: "none",
-      secure: true,
     },
   })
 );
