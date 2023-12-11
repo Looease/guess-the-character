@@ -12,7 +12,9 @@ To run the server locally: `cd server` `npm install` `npm run dev`
 To run the client locally: `cd client` `npm install` `npm run start`
 
 To Deploy:
+
 Assuming you have the Netlify Cli installed:
+
 To deploy the server: `cd server` `netlify build` `netlify deploy prod` 
 
 Publish directory: `.`
