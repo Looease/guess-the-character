@@ -44,7 +44,6 @@ router.get("/", (_req, res) => {
     const endpointList = [
         "/start-quiz",
         "/quiz",
-        "/get",
         "/update-answer",
         "/check-answers",
         "/results",
