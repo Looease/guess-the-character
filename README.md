@@ -3,7 +3,7 @@
 This is a full stack TypeScript/Express app.
 
 Accessing:
-The app uses pnpm as a package manager.
+The app uses npm as a package manager.
 
 Clone the app.
 
@@ -12,9 +12,12 @@ To run the server locally: `cd server` `npm install` `npm run dev`
 To run the client locally: `cd client` `npm install` `npm run start`
 
 To Deploy:
+
 Assuming you have the Netlify Cli installed:
+
 To deploy the server: `cd server` `netlify build` `netlify deploy prod` 
-Publich directory: `.`
+
+Publish directory: `.`
 
 To deploy the client: `cd client` `netlify build` `netlify deploy prod`
 

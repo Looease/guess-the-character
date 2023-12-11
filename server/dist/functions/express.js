@@ -21,6 +21,7 @@ const axios_1 = __importDefault(require("axios"));
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 const router = express_1.default.Router();
+
 app.use((0, cors_1.default)({
     origin: ["http://localhost:3000", "https://remarkable-cendol-7a7936.netlify.app", "https://elaborate-tarsier-256666.netlify.app"],
     methods: ['GET', 'POST'],

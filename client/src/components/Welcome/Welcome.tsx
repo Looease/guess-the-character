@@ -1,7 +1,17 @@
+import {useState, useEffect} from 'react'
 import { handleStartQuiz } from "../../requests/startQuiz";
 import "./Welcome.css";
 
 const Welcome = () => {
+  const [environment, setEnvironment] = useState('')
+ 
+  useEffect(() => {
+    if(process.env.NODE_ENV){
+      setEnvironment(process.env.NODE_ENV)
+    }
+
+  },[process.env.NODE_ENV])
+
   return (
     <main className="main">
       <h1>Guess the character</h1>
@@ -13,8 +23,9 @@ const Welcome = () => {
       <p>There are 10 rounds to get through.</p>
       <button
         className="button-welcome"
-        onClick={() => handleStartQuiz("home")}
-      >
+        onClick={() => {handleStartQuiz("home", environment)
+        localStorage.setItem("answerArray", JSON.stringify([]));
+      }}>
         Start quizzing
       </button>
     </main>

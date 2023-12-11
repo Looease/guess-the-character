@@ -1,6 +1,12 @@
+import {getUrl} from "../utils/getUrl"
+
 export const getResults = async () => {
+  
+    //TODO make enum list
+const fetchUrl = getUrl('results')
+
   try {
-    const response = await fetch("http://localhost:8000/results", {
+    const response = await fetch(`${fetchUrl}`, {
       headers: {
         "Content-Type": "application/json",
       },

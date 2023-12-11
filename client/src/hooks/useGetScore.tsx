@@ -1,7 +1,11 @@
 import { useQuery } from "react-query";
+import {getUrl} from "../utils/getUrl"
+
 
 export const useGetSessionData = () => {
-  const fetchUrl = "http://localhost:8000/check-session";
+
+//TODO make enum list
+const fetchUrl = getUrl('check-session')
 
   return useQuery("sessionData", async () => {
     const response = await fetch(fetchUrl, {

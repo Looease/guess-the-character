@@ -27,13 +27,15 @@ const Results: FC<ResultsProps> = ({ scores }) => {
     fetchData();
   }, [hasScore]);
 
+  const score = scores?.filter((answer) => {return answer.isCorrect})
+
   return (
     <>
-      {scores && scores.length >= 10 && (
+      {scores && (
         <>
           <h2>Game over</h2>
           <h3>Results: </h3>
-          <h4>You got {results?.score.correct.score}</h4>
+          <h4>You got {results && results.length? results?.score.correct.score : score?.length}</h4>
 
           <ol style={{ display: "flex", flexDirection: "column" }}>
             {scores.map((data: AnswerData, index) => {
@@ -48,6 +50,7 @@ const Results: FC<ResultsProps> = ({ scores }) => {
             className="button restart"
             onClick={() => {
               handleStartQuiz("answer");
+              localStorage.setItem("answerArray", JSON.stringify([]));
             }}
           >
             Start again
