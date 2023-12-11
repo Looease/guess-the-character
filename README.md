@@ -3,7 +3,7 @@
 This is a full stack TypeScript/Express app.
 
 Accessing:
-The app uses pnpm as a package manager.
+The app uses npm as a package manager.
 
 Clone the app.
 
