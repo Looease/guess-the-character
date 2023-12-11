@@ -3,10 +3,10 @@ import { useQuery } from "react-query";
 import {getUrl} from "../utils/getUrl"
 
 
-export const useGetCharacters = () => {
+export const useGetCharacters = (environment: string) => {
 
     //TODO make enum list
-const fetchUrl = getUrl('quiz')
+const fetchUrl = getUrl('quiz', environment)
 
   return useQuery({
     queryKey: ["characters"],

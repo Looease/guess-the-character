@@ -1,9 +1,16 @@
+import {useState, useEffect} from 'react'
 import { handleStartQuiz } from "../../requests/startQuiz";
 import "./Welcome.css";
 
 const Welcome = () => {
+  const [environment, setEnvironment] = useState('')
+ 
+  useEffect(() => {
+    if(process.env.NODE_ENV){
+      setEnvironment(process.env.NODE_ENV)
+    }
 
-  console.log(process.env, 'process.env')
+  },[process.env.NODE_ENV])
 
   return (
     <main className="main">
@@ -16,7 +23,7 @@ const Welcome = () => {
       <p>There are 10 rounds to get through.</p>
       <button
         className="button-welcome"
-        onClick={() => handleStartQuiz("home")}
+        onClick={() => handleStartQuiz("home", environment)}
       >
         Start quizzing
       </button>

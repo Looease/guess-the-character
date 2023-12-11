@@ -22,7 +22,7 @@ declare module "express-session" {
 
 api.use(
   cors({
-    origin: ["http://localhost:8888", "https://elaborate-tarsier-256666.netlify.app/", "http://localhost:3000/"],
+    origin: ["http://localhost:8888", "https://elaborate-tarsier-256666.netlify.app", "http://localhost:3000"],
     credentials: true,
   })
 );

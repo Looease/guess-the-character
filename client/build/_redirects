@@ -1,0 +1,10 @@
+/express/* https://darling-choux-63e4e8.netlify.app/.netlify/functions/express/:splat  200
+
+<!-- /quiz/*    
+/check-answers/*    https://steady-kitten-11d7a8.netlify.app/:splat  200
+/start-quiz/*   https://steady-kitten-11d7a8.netlify.app/:splat  200
+/update-answer/*    https://steady-kitten-11d7a8.netlify.app/:splat 200
+/get/*   https://steady-kitten-11d7a8.netlify.app/:splat  200
+/results/*  https://steady-kitten-11d7a8.netlify.app/:splat  200 -->
+
+/*    /index.html   200
