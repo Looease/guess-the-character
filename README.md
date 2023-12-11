@@ -7,9 +7,16 @@ The app uses pnpm as a package manager.
 
 Clone the app.
 
-To run the server: `cd server` `pnpm i` `pmpm dev`
+To run the server locally: `cd server` `npm install` `npm run dev`
 
-To run the client: `cd client` `pnpm i` `pmpm start`
+To run the client locally: `cd client` `npm install` `npm run start`
+
+To Deploy:
+Assuming you have the Netlify Cli installed:
+To deploy the server: `cd server` `netlify build` `netlify deploy prod` 
+Publich directory: `.`
+
+To deploy the client: `cd client` `netlify build` `netlify deploy prod`
 
 Video of game: 
 
