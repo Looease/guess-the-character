@@ -19,13 +19,16 @@ const gameData_1 = require("../utils/gameData");
 const express_session_1 = __importDefault(require("express-session"));
 const axios_1 = __importDefault(require("axios"));
 const cors_1 = __importDefault(require("cors"));
-const api = (0, express_1.default)();
-api.use((0, cors_1.default)({
-    origin: ["http://localhost:8888", "https://elaborate-tarsier-256666.netlify.app", "http://localhost:3000"],
+const app = (0, express_1.default)();
+const router = express_1.default.Router();
+
+app.use((0, cors_1.default)({
+    origin: ["http://localhost:3000", "https://remarkable-cendol-7a7936.netlify.app", "https://elaborate-tarsier-256666.netlify.app"],
+    methods: ['GET', 'POST'],
     credentials: true,
 }));
-api.use(express_1.default.json());
-api.use((0, express_session_1.default)({
+app.use(express_1.default.json());
+app.use((0, express_session_1.default)({
     secret: "qwerty",
     resave: false,
     saveUninitialized: true,
@@ -33,22 +36,22 @@ api.use((0, express_session_1.default)({
         httpOnly: false,
         path: "/",
         sameSite: "none",
-        secure: true,
     },
 }));
-api.use(express_1.default.urlencoded({ extended: true }));
-api.get("/", (_req, res) => {
+app.use(express_1.default.urlencoded({ extended: true }));
+console.log('here');
+router.get("/", (_req, res) => {
+    console.log('here1');
     const endpointList = [
         "/start-quiz",
         "/quiz",
-        "/get",
         "/update-answer",
         "/check-answers",
         "/results",
     ];
     res.json({ endpoints: endpointList });
 });
-api.get("/start-quiz", (req, res) => {
+router.get("/start-quiz", (req, res) => {
     req.session.destroy((err) => {
         if (err) {
             console.error("Error destroying session:", err);
@@ -59,7 +62,7 @@ api.get("/start-quiz", (req, res) => {
         }
     });
 });
-api.get("/quiz", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/quiz", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const axiosResponse = yield axios_1.default.get("https://api.disneyapi.dev/character");
         const round = (0, gameData_1.shuffleArray)(axiosResponse.data.data);
@@ -71,15 +74,15 @@ api.get("/quiz", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).send("Internal server error");
     }
 }));
-api.post("/update-answer", (req, res) => {
+router.post("/update-answer", (req, res) => {
     try {
         const data = req.body;
         req.session.data = req.session.data || [];
         req.session.data.push(data);
-        if (req.session.data) {
-            const redirectLocation = "/quiz";
-            return res.redirect(302, redirectLocation);
-        }
+        // if (req.session.data) {
+        //   const redirectLocation = "/quiz";
+        //   return res.redirect(302, redirectLocation);
+        // }
         res.send({ success: true });
     }
     catch (error) {
@@ -87,13 +90,13 @@ api.post("/update-answer", (req, res) => {
         res.status(500).json({ success: false, error: "Internal Server Error" });
     }
 });
-api.get("/check-answers", (req, res) => {
+router.get("/check-answers", (req, res) => {
     //req.session = req.session || {};
     const sessionData = (req.session || {}).data || [];
     // const sessionData = req.session.data || [];
     res.json({ sessionData });
 });
-api.get("/results", (req, res) => {
+router.get("/results", (req, res) => {
     const sessionData = (req.session || {}).data || [];
     //req.session = req.session || {};
     //const sessionData = req.session.data || [];
@@ -125,5 +128,10 @@ api.get("/results", (req, res) => {
     };
     res.json({ score });
 });
-exports.handler = (0, serverless_http_1.default)(api);
+const PORT = 8000;
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`);
+});
+app.use('/.netlify/functions/express', router);
+exports.handler = (0, serverless_http_1.default)(app);
 //# sourceMappingURL=express.js.map

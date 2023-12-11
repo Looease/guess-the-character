@@ -5,7 +5,9 @@ import session from "express-session";
 import axios from "axios";
 import cors from "cors";
 
-const api = express();
+const app = express();
+const router = express.Router();
+
 
 type AnswerData = {
   id: number;
@@ -20,15 +22,19 @@ declare module "express-session" {
   }
 }
 
-api.use(
+app.use(
   cors({
+    origin: ["http://localhost:3000", "https://remarkable-cendol-7a7936.netlify.app", "https://elaborate-tarsier-256666.netlify.app"],
+    methods: ['GET', 'POST'],
     origin: ["http://localhost:8888", "https://elaborate-tarsier-256666.netlify.app", "http://localhost:3000"],
     credentials: true,
   })
 );
-api.use(express.json());
 
-api.use(
+
+app.use(express.json());
+
+app.use(
   session({
     secret: "qwerty",
     resave: false,
@@ -37,18 +43,18 @@ api.use(
       httpOnly: false,
       path: "/",
       sameSite: "none",
-      secure: true,
     },
   })
 );
 
-api.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+console.log('here')
 
-api.get("/", (_req: Request, res: Response) => {
+router.get("/", (_req: Request, res: Response) => {
+  console.log('here1')
   const endpointList = [
     "/start-quiz",
     "/quiz",
-    "/get",
     "/update-answer",
     "/check-answers",
     "/results",
@@ -56,7 +62,7 @@ api.get("/", (_req: Request, res: Response) => {
   res.json({ endpoints: endpointList });
 });
 
-api.get("/start-quiz", (req: Request, res: Response) => {
+router.get("/start-quiz", (req: Request, res: Response) => {
   req.session.destroy((err) => {
     if (err) {
       console.error("Error destroying session:", err);
@@ -67,7 +73,7 @@ api.get("/start-quiz", (req: Request, res: Response) => {
   });
 });
 
-api.get("/quiz", async (_req: Request, res: Response) => {
+router.get("/quiz", async (_req: Request, res: Response) => {
   try {
     const axiosResponse = await axios.get(
       "https://api.disneyapi.dev/character"
@@ -87,16 +93,16 @@ api.get("/quiz", async (_req: Request, res: Response) => {
   }
 });
 
-api.post("/update-answer", (req: Request, res: Response) => {
+router.post("/update-answer", (req: Request, res: Response) => {
   try {
     const data = req.body;
     req.session.data = req.session.data || [];
     req.session.data.push(data);
 
-    if (req.session.data) {
-      const redirectLocation = "/quiz";
-      return res.redirect(302, redirectLocation);
-    }
+    // if (req.session.data) {
+    //   const redirectLocation = "/quiz";
+    //   return res.redirect(302, redirectLocation);
+    // }
     res.send({ success: true });
   } catch (error) {
     console.error("Error setting updating answer:", error);
@@ -104,7 +110,7 @@ api.post("/update-answer", (req: Request, res: Response) => {
   }
 });
 
-api.get("/check-answers", (req: Request, res: Response) => {
+router.get("/check-answers", (req: Request, res: Response) => {
   //req.session = req.session || {};
 
   const sessionData = (req.session || {}).data || [];
@@ -113,7 +119,7 @@ api.get("/check-answers", (req: Request, res: Response) => {
   res.json({ sessionData });
 });
 
-api.get("/results", (req: Request, res: Response) => {
+router.get("/results", (req: Request, res: Response) => {
   const sessionData = (req.session || {}).data || [];
 
   //req.session = req.session || {};
@@ -148,4 +154,10 @@ api.get("/results", (req: Request, res: Response) => {
   res.json({ score });
 });
 
-export const handler = serverless(api);
+const PORT = 8000;
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`);
+});
+
+app.use('/.netlify/functions/express', router);
+export const handler = serverless(app);
