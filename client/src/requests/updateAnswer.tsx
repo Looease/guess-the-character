@@ -22,7 +22,7 @@ const fetchUrl = getUrl('update-answer')
     });
 
     if (response.ok) {
-      window.location.href = response.headers.get("Location") || "/quiz";
+      window.location.href = response.headers.get("Location") || "/game";
     }
   } catch (error) {
     console.error("Error setting session data:", error);
