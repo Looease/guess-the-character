@@ -8,7 +8,6 @@ export const handleCheckAnswers = async (
 
   //TODO make enum list
   const fetchUrl = getUrl('check-answers', environment)
-  console.log(fetchUrl)
 
   try {
     const response = await fetch(`${fetchUrl}`, {

@@ -23,8 +23,9 @@ const Welcome = () => {
       <p>There are 10 rounds to get through.</p>
       <button
         className="button-welcome"
-        onClick={() => handleStartQuiz("home", environment)}
-      >
+        onClick={() => {handleStartQuiz("home", environment)
+        localStorage.setItem("answerArray", JSON.stringify([]));
+      }}>
         Start quizzing
       </button>
     </main>
