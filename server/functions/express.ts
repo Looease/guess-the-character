@@ -50,7 +50,6 @@ app.use(express.urlencoded({ extended: true }));
 console.log('here')
 
 router.get("/", (_req: Request, res: Response) => {
-  console.log('here1')
   const endpointList = [
     "/start-quiz",
     "/quiz",
