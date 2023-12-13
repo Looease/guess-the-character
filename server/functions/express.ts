@@ -24,9 +24,8 @@ declare module "express-session" {
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://remarkable-cendol-7a7936.netlify.app", "https://elaborate-tarsier-256666.netlify.app"],
+    origin: ["http://localhost:3000", "https://remarkable-cendol-7a7936.netlify.app", "https://elaborate-tarsier-256666.netlify.app", "http://localhost:8888",],
     methods: ['GET', 'POST'],
-    origin: ["http://localhost:8888", "https://elaborate-tarsier-256666.netlify.app", "http://localhost:3000"],
     credentials: true,
   })
 );
